@@ -14,8 +14,6 @@ jobs:
         - name: Deploy the File on EC2
           run: |
             mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
-            ssh-keyscan ec2-54-90-235-106.compute-1.amazonaws.com >> ~/.ssh/known_hosts
-            eval $(ssh-agent)
-            ssh-add - <<< ci-cd-training.pem
+            ssh-keyscan -t rsa ec2-54-90-235-106.compute-1.amazonaws.com >> ~/.ssh/known_hosts
             scp -i "ci-cd-training.pem" greetings.html ubuntu@ec2-54-90-235-106.compute-1.amazonaws.com:/var/www/html/
             
