@@ -15,7 +15,7 @@ jobs:
           run: |
             mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
             ssh-keyscan -t rsa ec2-54-90-235-106.compute-1.amazonaws.com >> ~/.ssh/known_hosts
-            cat ${{EC2_KEY}} > ci-cd-training.pem
+            cat {{EC2_KEY}} > ci-cd-training.pem
             chmod 400 ci-cd-training.pem
             scp -i "ci-cd-training.pem" greetings.html ubuntu@ec2-54-90-235-106.compute-1.amazonaws.com:/var/www/html/index.html
             
