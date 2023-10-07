@@ -1,0 +1,18 @@
+name: ci-cd-training
+on:
+    push:
+        branches:
+        - master
+
+jobs:
+    build:
+        runs-on: ubuntu
+        steps:
+        - uses: actions/checkout@v3
+          with:
+            ref: master  
+        
+        - name: Deploy the File on EC2
+          run: |
+            scp -i "ci-cd-training.pem" greetings.html ubuntu@ec2-54-90-235-106.compute-1.amazonaws.com:/var/www/html/
+            
