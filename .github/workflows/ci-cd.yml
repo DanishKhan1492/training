@@ -14,7 +14,7 @@ jobs:
         - name: Deploy the File on EC2
           run: |
             mkdir -p ~/.ssh && touch ~/.ssh/known_hosts
-            sudo ssh-keyscan -t rsa ec2-54-90-235-106.compute-1.amazonaws.com >> ~/.ssh/known_hosts
-            sudo chmod 400 ci-cd-training.pem
-            sudo scp -i "ci-cd-training.pem" greetings.html ubuntu@ec2-54-90-235-106.compute-1.amazonaws.com:/var/www/html/
+            ssh-keyscan -t rsa ec2-54-90-235-106.compute-1.amazonaws.com >> ~/.ssh/known_hosts
+            chmod 400 ci-cd-training.pem
+            scp -i "ci-cd-training.pem" greetings.html ubuntu@ec2-54-90-235-106.compute-1.amazonaws.com:/var/www/html/
             
